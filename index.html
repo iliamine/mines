@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mines Game</title>
+    <style>
+        /* Dark mode styling */
+        body {
+            background-color: #1e1e1e;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        h1, label {
+            color: #ffffff;
+        }
+        .top-bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        #game {
+            display: grid;
+            grid-template-columns: repeat(5, 70px);
+            grid-gap: 10px;
+        }
+        .sidebar {
+            position: absolute;
+            left: 350px;
+            top: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .tile {
+            width: 70px;
+            height: 70px;
+            background-color: #333333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border: 1px solid #555555;
+            transition: background-color 0.3s;
+        }
+        .safe {
+            background-color: #4caf50;
+        }
+        .mine {
+            background-color: #e74c3c;
+            color: white;
+        }
+        #status, #high-score {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        button, select {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #444444;
+            color: #ffffff;
+            border: none;
+            margin: 5px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover, select:hover {
+            background-color: #666666;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <h1>Mines Game</h1>
+        <div id="status">Score: 0</div>
+        <div id="high-score">High Score: 0 <button onclick="resetHighScore()">Reset High Score</button></div>
+    </div>
+
+    <div class="sidebar">
+        <label for="mine-count">Select Number of Mines:</label>
+        <select id="mine-count" onchange="startGame()">
+            <script>
+                for (let i = 1; i <= 24; i++) {
+                    document.write(`<option value="${i}">${i}</option>`);
+                }
+            </script>
+        </select>
+        <button onclick="saveGame()">Save</button>
+    </div>
+
+    <div id="game"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
